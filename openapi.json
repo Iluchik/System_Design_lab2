@@ -1,0 +1,626 @@
+{
+	"openapi": "3.1.0",
+	"info": {
+		"title": "FastAPI",
+		"version": "0.1.0"
+	},
+	"paths": {
+		"/users": {
+			"get": {
+				"summary": "Get Online",
+				"operationId": "get_online_users_get",
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/User"
+									},
+									"type": "array",
+									"title": "Response Get Online Users Get"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"OAuth2PasswordBearer": []
+					}
+				]
+			},
+			"put": {
+				"summary": "Update Client",
+				"operationId": "update_client_users_put",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/User"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/HTTPValidationError"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"OAuth2PasswordBearer": []
+					}
+				]
+			},
+			"post": {
+				"summary": "Create User",
+				"operationId": "create_user_users_post",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/User"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/HTTPValidationError"
+								}
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Logout",
+				"operationId": "logout_users_delete",
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"OAuth2PasswordBearer": []
+					}
+				]
+			}
+		},
+		"/token": {
+			"post": {
+				"summary": "Login",
+				"operationId": "login_token_post",
+				"requestBody": {
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/Body_login_token_post"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"additionalProperties": {
+										"type": "string"
+									},
+									"type": "object",
+									"title": "Response Login Token Post"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/HTTPValidationError"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/{user_id}": {
+			"get": {
+				"summary": "Get Client",
+				"operationId": "get_client_users__user_id__get",
+				"security": [
+					{
+						"OAuth2PasswordBearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "user_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"title": "User Id"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/HTTPValidationError"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/delete": {
+			"delete": {
+				"summary": "Delete Account",
+				"operationId": "delete_account_users_delete_delete",
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"OAuth2PasswordBearer": []
+					}
+				]
+			}
+		},
+		"/package": {
+			"get": {
+				"summary": "Get User Packages",
+				"operationId": "get_user_packages_package_get",
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Package"
+									},
+									"type": "array",
+									"title": "Response Get User Packages Package Get"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"OAuth2PasswordBearer": []
+					}
+				]
+			},
+			"put": {
+				"summary": "Update Package",
+				"operationId": "update_package_package_put",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Package"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Package"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/HTTPValidationError"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"OAuth2PasswordBearer": []
+					}
+				]
+			},
+			"post": {
+				"summary": "Create Package",
+				"operationId": "create_package_package_post",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Package_discription"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Package"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/HTTPValidationError"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"OAuth2PasswordBearer": []
+					}
+				]
+			}
+		},
+		"/package/{product_id}": {
+			"delete": {
+				"summary": "Delete Package",
+				"operationId": "delete_package_package__product_id__delete",
+				"security": [
+					{
+						"OAuth2PasswordBearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "product_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"title": "Product Id"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Package"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/HTTPValidationError"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"Body_login_token_post": {
+				"properties": {
+					"email": {
+						"type": "string",
+						"title": "Email"
+					},
+					"grant_type": {
+						"anyOf": [
+							{
+								"type": "string",
+								"pattern": "password"
+							},
+							{
+								"type": "null"
+							}
+						],
+						"title": "Grant Type"
+					},
+					"username": {
+						"type": "string",
+						"title": "Username"
+					},
+					"password": {
+						"type": "string",
+						"title": "Password"
+					},
+					"scope": {
+						"type": "string",
+						"title": "Scope",
+						"default": ""
+					},
+					"client_id": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "null"
+							}
+						],
+						"title": "Client Id"
+					},
+					"client_secret": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "null"
+							}
+						],
+						"title": "Client Secret"
+					}
+				},
+				"type": "object",
+				"required": [
+					"email",
+					"username",
+					"password"
+				],
+				"title": "Body_login_token_post"
+			},
+			"HTTPValidationError": {
+				"properties": {
+					"detail": {
+						"items": {
+							"$ref": "#/components/schemas/ValidationError"
+						},
+						"type": "array",
+						"title": "Detail"
+					}
+				},
+				"type": "object",
+				"title": "HTTPValidationError"
+			},
+			"Package": {
+				"properties": {
+					"package_details": {
+						"type": "object",
+						"title": "Package Details"
+					},
+					"recipient_id": {
+						"type": "integer",
+						"title": "Recipient Id"
+					},
+					"sender_id": {
+						"type": "integer",
+						"title": "Sender Id"
+					},
+					"product_id": {
+						"type": "string",
+						"title": "Product Id"
+					}
+				},
+				"type": "object",
+				"required": [
+					"package_details",
+					"recipient_id",
+					"sender_id",
+					"product_id"
+				],
+				"title": "Package"
+			},
+			"Package_discription": {
+				"properties": {
+					"package_details": {
+						"type": "object",
+						"title": "Package Details"
+					},
+					"recipient_id": {
+						"type": "integer",
+						"title": "Recipient Id"
+					}
+				},
+				"type": "object",
+				"required": [
+					"package_details",
+					"recipient_id"
+				],
+				"title": "Package_discription"
+			},
+			"User": {
+				"properties": {
+					"id": {
+						"type": "integer",
+						"title": "Id"
+					},
+					"name": {
+						"type": "string",
+						"title": "Name"
+					},
+					"email": {
+						"type": "string",
+						"title": "Email"
+					},
+					"password": {
+						"type": "string",
+						"title": "Password"
+					},
+					"age": {
+						"anyOf": [
+							{
+								"type": "integer"
+							},
+							{
+								"type": "null"
+							}
+						],
+						"title": "Age"
+					},
+					"adress": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "null"
+							}
+						],
+						"title": "Adress"
+					},
+					"phone": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "null"
+							}
+						],
+						"title": "Phone"
+					}
+				},
+				"type": "object",
+				"required": [
+					"id",
+					"name",
+					"email",
+					"password"
+				],
+				"title": "User"
+			},
+			"ValidationError": {
+				"properties": {
+					"loc": {
+						"items": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "integer"
+								}
+							]
+						},
+						"type": "array",
+						"title": "Location"
+					},
+					"msg": {
+						"type": "string",
+						"title": "Message"
+					},
+					"type": {
+						"type": "string",
+						"title": "Error Type"
+					}
+				},
+				"type": "object",
+				"required": [
+					"loc",
+					"msg",
+					"type"
+				],
+				"title": "ValidationError"
+			}
+		},
+		"securitySchemes": {
+			"OAuth2PasswordBearer": {
+				"type": "oauth2",
+				"flows": {
+					"password": {
+						"scopes": {},
+						"tokenUrl": "token"
+					}
+				}
+			}
+		}
+	}
+}
